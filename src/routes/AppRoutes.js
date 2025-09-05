@@ -23,6 +23,13 @@ import AppUseProps from './../components/ch03_component/use_props';
 import AppMakeTable01 from './../components/ch03_component/array_and_table_01';
 import AppMakeTable02 from './../components/ch03_component/array_and_table_02';
 
+//4장
+import ClickEvent from './../components/ch04.event_handling/click_event';
+import ChangeEvent from './../components/ch04.event_handling/change_event';
+import MouseEvent from './../components/ch04.event_handling/mouse_event';
+import KeyEvent from './../components/ch04.event_handling/Key_event';
+import Cafe from './../components/ch04.event_handling/cafe';
+
 
 function AppRoutes() {
     return (
@@ -43,6 +50,12 @@ function AppRoutes() {
             <Route path='/use_props' element={<AppUseProps />} />
             <Route path='/array_and_table_01' element={<AppMakeTable01 />} />
             <Route path='/array_and_table_02' element={<AppMakeTable02 />} />
+
+            <Route path='/click_event' element={<ClickEvent />} />
+            <Route path='/change_event' element={<ChangeEvent />} />
+            <Route path='/mouse_event' element={<MouseEvent />} />
+            <Route path='/Key_event' element={<KeyEvent />} />
+            <Route path='/cafe' element={<Cafe />} />
         </Routes>
     );
 };
