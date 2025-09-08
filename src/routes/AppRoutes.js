@@ -29,6 +29,12 @@ import ChangeEvent from './../components/ch04.event_handling/change_event';
 import MouseEvent from './../components/ch04.event_handling/mouse_event';
 import KeyEvent from './../components/ch04.event_handling/Key_event';
 import Cafe from './../components/ch04.event_handling/cafe';
+import SubmitEvent from './../components/ch04.event_handling/submit_event';
+
+//5장
+import Usestate from './../components/ch05.Hooks/use_state_01';
+import Usestate1 from './../components/ch05.Hooks/use_state_02';
+import Usestate2 from './../components/ch05.Hooks/use_state_03';
 
 
 function AppRoutes() {
@@ -56,6 +62,11 @@ function AppRoutes() {
             <Route path='/mouse_event' element={<MouseEvent />} />
             <Route path='/Key_event' element={<KeyEvent />} />
             <Route path='/cafe' element={<Cafe />} />
+            <Route path='/submit_event' element={<SubmitEvent />} />
+
+            <Route path='/use_state_01' element={<Usestate />} />
+            <Route path='/use_state_02' element={<Usestate1 />} />
+            <Route path='/use_state_03' element={<Usestate2 />} />
         </Routes>
     );
 };

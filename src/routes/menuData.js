@@ -34,7 +34,16 @@ export const menuData = [
             { path: '/mouse_event', label: '마우스 이벤트' },
             { path: '/Key_event', label: '키보드 이벤트' },
             { path: '/Cafe', label: '이벤트 카페' },
+            { path: '/submit_event', label: '전송 이벤트' },
 
+        ]
+    },
+    {
+        chapter: "ch05.Hooks",
+        items: [
+            { path: '/use_state_01', label: '스테이트 실습 01' },
+            { path: '/use_state_02', label: '스테이트 실습 02' },
+            { path: '/use_state_03', label: '스테이트 실습 03' },
         ]
     },
 
