@@ -35,6 +35,8 @@ import SubmitEvent from './../components/ch04.event_handling/submit_event';
 import Usestate from './../components/ch05.Hooks/use_state_01';
 import Usestate1 from './../components/ch05.Hooks/use_state_02';
 import Usestate2 from './../components/ch05.Hooks/use_state_03';
+import Usestate3 from './../components/ch05.Hooks/use_state_04';
+import UseEffect01 from './../components/ch05.Hooks/use_effect_01';
 
 
 function AppRoutes() {
@@ -67,6 +69,8 @@ function AppRoutes() {
             <Route path='/use_state_01' element={<Usestate />} />
             <Route path='/use_state_02' element={<Usestate1 />} />
             <Route path='/use_state_03' element={<Usestate2 />} />
+            <Route path='/use_state_04' element={<Usestate3 />} />
+            <Route path='/use_effect_01' element={<UseEffect01 />} />
         </Routes>
     );
 };
