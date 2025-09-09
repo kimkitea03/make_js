@@ -37,6 +37,8 @@ import Usestate1 from './../components/ch05.Hooks/use_state_02';
 import Usestate2 from './../components/ch05.Hooks/use_state_03';
 import Usestate3 from './../components/ch05.Hooks/use_state_04';
 import UseEffect01 from './../components/ch05.Hooks/use_effect_01';
+import UseEffect02 from './../components/ch05.Hooks/use_effect_02';
+import UseEffect03 from './../components/ch05.Hooks/use_effect_03';
 
 
 function AppRoutes() {
@@ -71,6 +73,8 @@ function AppRoutes() {
             <Route path='/use_state_03' element={<Usestate2 />} />
             <Route path='/use_state_04' element={<Usestate3 />} />
             <Route path='/use_effect_01' element={<UseEffect01 />} />
+            <Route path='/use_effect_02' element={<UseEffect02 />} />
+            <Route path='/use_effect_03' element={<UseEffect03 />} />
         </Routes>
     );
 };
