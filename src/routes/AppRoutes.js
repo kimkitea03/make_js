@@ -40,6 +40,10 @@ import UseEffect01 from './../components/ch05.Hooks/use_effect_01';
 import UseEffect02 from './../components/ch05.Hooks/use_effect_02';
 import UseEffect03 from './../components/ch05.Hooks/use_effect_03';
 
+//6장
+import AppCafe01 from './../components/ch06.bootstrap/coofee_bread_01/main';
+import AppCafe02 from './../components/ch06.bootstrap/coofee_bread_02/main';
+
 
 function AppRoutes() {
     return (
@@ -75,6 +79,10 @@ function AppRoutes() {
             <Route path='/use_effect_01' element={<UseEffect01 />} />
             <Route path='/use_effect_02' element={<UseEffect02 />} />
             <Route path='/use_effect_03' element={<UseEffect03 />} />
+
+
+            <Route path='/coffe_bread_01' element={<AppCafe01 />} />
+            <Route path='/coffe_bread_02' element={<AppCafe02 />} />
         </Routes>
     );
 };

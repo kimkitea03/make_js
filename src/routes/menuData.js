@@ -50,6 +50,14 @@ export const menuData = [
             { path: '/use_effect_03', label: '유저 에펙트 실습 03' },
         ]
     },
+    {
+        chapter: "ch06. IT Cafe",
+        items: [
+            { path: '/coffe_bread_01', label: 'IT Cage 01' },
+            { path: '/coffe_bread_02', label: 'IT Cage 02' },
+        ]
+
+    },
 
     //여기에 4장, 5장 .... 내용을 계속 추가하면 됨 
 ];
