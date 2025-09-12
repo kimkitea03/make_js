@@ -13,7 +13,7 @@ import { useState } from "react";
 4. id 항목은 사용자에게 보여 주되, 읽기 전용으로 처리하면 됩니다.
     가짜는 읽기 전용, 지짜 정보는 type="hidden"으로 처리합니다.
 */
-function App({ onSubmitUpdate, product }) {
+function App({ onSubmitUpdate, product, categories }) {
     //코드에서 반복적인 단어는 변수로 만들어 JSX 문법으로 처리
     const comment = '수정';
 
@@ -38,8 +38,15 @@ function App({ onSubmitUpdate, product }) {
             console.log("갱신된 값:", updated);
             return updated;
         });
-
     }
+    //categories 배열을 이용하여 동적 콤보 박스 만들기
+    const ac = categories.map((cate, index) =>
+        // cate는 카테고리 1개를 의미하는 변수입니다.
+        // 파일 Createcategy.js를 참조하여 코딩하도록 합니다.
+        <option key={index} value={cate.english} selected={cate.english === formData.category}>
+            {cate.korean}
+        </option>
+    );
 
     return (
         <div className="App">
@@ -64,8 +71,7 @@ function App({ onSubmitUpdate, product }) {
                     <InputGroup.Text className="input-group-text">카테고리</InputGroup.Text>
                     <Form.Select name="category" onChange={InputChange}>
                         <option value="-">--카테고리를 선택해 주세요.--</option>
-                        <option value="bread" selected={formData.category === 'bread'}>빵</option>
-                        <option value="beverage" selected={formData.category === 'beverage'}>음료수</option>
+                        {ac}
                     </Form.Select>
                 </InputGroup>
                 <InputGroup className="custom-input-group">

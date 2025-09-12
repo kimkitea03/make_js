@@ -28,6 +28,7 @@ function App() {
     //insert, update, delete, read, detail 등등
     const [mode, setmode] = useState('');
 
+    //selectedId는 현제 선택이 된 항목의 상품 ID 정보입니다.
     //프로그램 최초 시작시 1번이 선택되었다고 가정합니다.
     const [selectedId, setSelectedId] = useState(1);
 
@@ -51,12 +52,19 @@ function App() {
     }
 
     //수정하고자 하는 상품 1개의 정보를 저장하기 위하여 정의합니다.
-    const [currentProduct, setCurrentProduct] = useState(null);
+    // const [currentProduct, setCurrentProduct] = useState(null);
 
     // 버튼을 클릭하여 mode를 변경하였습니다.
     const ModeChanged = (mode) => {
         console.log(` 변경된 모드 : ${mode}`);
         setmode(mode);//변경된 모드로 mode 스테이트에 할당합니다.
+
+        if (mode === 'get_delete') { // 사용자가 특정 항목을 삭제하려고 시도함
+            // 삭제하려고 선택한 품목의 id만 제외하고, 다시 필터링합니다.
+            const remainProduct = getExceptData(selectedId);
+            setProducts(remainProduct);
+            setmode('read');
+        }
 
         // if (mode === 'get_update') {//수정하려고 클린됨
         //     // const currentProduct = getProductById();
@@ -107,13 +115,46 @@ function App() {
 
     // 사용자가 상품 수정 화면에서 내용을 수정하고, [수정] 버튼을 눌렀습니다.
     const UpdateData = (formData) => {
-        
+
         //수정된 상품을 제외하고, 나머지 추출
         const anotherProduct = getExceptData(formData);
+
         // 추출된 상품 목록과 수정된 상품 합치기
         const newProductsList = anotherProduct.concat(formData);
         setProducts(newProductsList);//상품 업데이트
         setmode('read');
+    }
+
+    /*
+    카테고리 정보는 동적으로 갱신이 되어야 하므로, 다음과 같이 자바 스크립트 배열을 만들어서 처리해야 합니다.
+    1. 자바 스크립트 배열로 카테고리 초기화
+    2. 관리해야 하므로 state으로 처리해야 함
+    3.폼 양식(상품 등록, 수정페이지)에 카테고리를 동적으로 생성
+    4. 추가/ 삭제 작업이 발생하면 동적으로 갱신해야 함
+    5. 상품 목록 페이지 (content)에서 카테고리 한글 이름 
+    */
+
+    const categoryList = [
+        { english: 'bread', korean: '빵' },
+        { english: 'beverage', korean: '음료수' },
+
+    ];
+
+    const [categorys, setCategorys] = useState(categoryList);
+
+
+    //사용자가 카테고리 추가 화면에서 내용을 기입하고, 추가 버튼을 눌렀습니다.
+    const InsertCartegoru = (formData) => {
+        // formData는 신규 추가할 카테고리 입니다.
+
+        //파라미터 이름은 파일 CreateCategory.js에서 참조해야 합니다.
+        const newCategory = { english: formData.english.value, korean: formData.korean.value };
+
+        //totalCategory는 이전 카테고리에 신규 카테고리를 추가한 목록입니다.
+        const totalCategory = categorys.concat(newCategory);
+
+        setCategorys(totalCategory);//카테고리 정보 갱신
+        setmode('read');//모드변경
     }
 
     return (
@@ -123,7 +164,7 @@ function App() {
             </Card.Header>
             <Card.Body>
                 {/* onClickToContent 프롭스가 리턴되고 난 후 ClickArrived 함수가 동작되도록 하겠습니다. */}
-                <Content contents={products} onClickToContent={ClickArrived} />
+                <Content contents={products} onClickToContent={ClickArrived} categories={categorys} />
             </Card.Body>
             <Card.Body>
                 <Switcher
@@ -131,6 +172,8 @@ function App() {
                     product={getProductById()}
                     onSubmitInsert={InsertData}
                     onSubmitUpdate={UpdateData}
+                    onSubmitCategoryAdd={InsertCartegoru}
+                    categories={categorys}
                 />
             </Card.Body>
             <Card.Footer>
